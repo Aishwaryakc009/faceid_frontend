@@ -18,7 +18,7 @@ export default function Settings() {
       const fd = new FormData()
       fd.append('key', key)
       fd.append('value', value)
-      await fetch('http://localhost:8000/settings', {
+      await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/settings`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         body: fd,

@@ -15,7 +15,7 @@ export default function Login({ onLogin }) {
       fd.append('username', username)
       fd.append('password', password)
       fd.append('grant_type', 'password')
-      const res = await fetch('http://localhost:8000/login', { method: 'POST', body: fd })
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/login`, { method: 'POST', body: fd })
       if (!res.ok) throw new Error('Incorrect username or password.')
       const data = await res.json()
       localStorage.setItem('token', data.access_token)
